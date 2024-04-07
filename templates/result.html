@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #041749;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: rgb(218, 217, 231); 
+        }
+
+        .result-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgb(218, 217, 231);
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .br-top {
+            margin-top: 20px;
+        }
+
+        .br-bottom {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Result</h1>
+
+    <div class="result-container">
+        <p><span class="{% if transcript_result[0] == 1 %}green{% else %}red{% endif %}">Academic Qualification:</span> {% if transcript_result[0] == 1 %}Meets the necessary academic qualification criteria.{% else %}Does not meet the necessary academic qualification criteria.{% endif %}</p>
+        <p><span class="{% if transcript_result[1] == 1 %}green{% else %}red{% endif %}">Skills:</span> {% if transcript_result[1] == 1 %}Possesses the required skills.{% else %}Does not possess the required skills.{% endif %}</p>
+        <p><span class="{% if transcript_result[2] == 1 %}green{% else %}red{% endif %}">Work Experience:</span> {% if transcript_result[2] == 1 %}Has required minimum work experience.{% else %}Does not have the minimum required work experience.{% endif %}</p>
+        <p><span class="{% if emotion_score >= 0.5 %}green{% else %}red{% endif %}">Attitude:</span> {% if emotion_score >= 0.5 %}Confident and has a positive attitude.{% else %}Not so positive in attitude.{% endif %}</p>
+        <br class="br-top">
+        <p class="br-bottom"><span class="{% if final_score == 1 %}green{% else %}red{% endif %}">Final Decision:</span> {% if final_score == 1 %}Can be considered for the next round of recruitment.{% else %}Cannot be considered for the next round of recruitment.{% endif %}</p>
+    </div>
+</body>
+</html>
