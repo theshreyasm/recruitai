@@ -3,3 +3,4 @@ venv
 transcripts
 videos
 video_frames
+.env

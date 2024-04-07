@@ -4,9 +4,12 @@ import asyncio
 import nest_asyncio
 import time
 import json
+from dotenv import load_dotenv
 
 # Apply nest_asyncio
 nest_asyncio.apply()
+
+llava_endpoint = os.getenv("LLAVA_ENDPOINT")
 
 async def fetch(session, url, data):
     async with session.post(url, data=data) as response:
@@ -25,7 +28,7 @@ async def analyze(qualification, skills, experience, response_count = 1, result 
     
     for prompt in prompts:
         
-        url = "http://8.12.5.48:11434/api/generate"
+        url = llava_endpoint
         data = json.dumps({
         "model": "llava:7b-v1.6-mistral-q5_K_M",
         "prompt": s + prompt,

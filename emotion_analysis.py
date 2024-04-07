@@ -6,6 +6,7 @@ import time
 import json
 import os
 import base64
+from dotenv import load_dotenv
 from PIL import Image
 
 def image_to_base64(image_path):
@@ -16,6 +17,8 @@ def image_to_base64(image_path):
 
 # Apply nest_asyncio
 nest_asyncio.apply()
+
+llava_endpoint = os.getenv("LLAVA_ENDPOINT")
 
 async def fetch(session, url, data):
     async with session.post(url, data=data) as response:
@@ -36,7 +39,7 @@ async def analyze(response_count = 1):
             
 
         s = image_to_base64(frame_path)
-        url = "http://8.12.5.48:11434/api/generate"
+        url = llava_endpoint
         data = json.dumps({
         "model": "llava:7b-v1.6-mistral-q5_K_M",
         "prompt": "if you had to categorize the emotion of this person as happy, sad, angry, fear, neutral or confident. what would it be? i need a precise one word answer",
