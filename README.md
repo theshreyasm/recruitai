@@ -16,7 +16,7 @@ Automating first round selections in recruitment process. As an alternative to r
 ```
 4. Run the Flask app
 ```
-  python run.py
+  python app.py
 
 ```
 
